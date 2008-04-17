@@ -1,0 +1,26 @@
+{% extends "cms/base.html" %}
+
+{% load markup cms_tags %}
+
+{% block title %}{{ block.super }} | {{ article.section.name }}{% endblock %}
+
+{% block content %}
+  <div id="content">
+    <div class="feature">
+      {{ article|add_images|markdown }}
+    </div>
+  
+    <div id="related">
+      {% if related %}
+        Related articles:
+        {% for article in related %}
+          <a href="{% url cms.views.article article.slug %}">{{ article.title }}</a>
+          {% if not forloop.last %}
+            |
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+

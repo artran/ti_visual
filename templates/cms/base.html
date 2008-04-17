@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Ray Tran" />
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <title>{% block title %}artran ltd{% endblock %}</title>
+    <link rel="stylesheet" href="/media/css/artran.css" type="text/css" media="all" charset="utf-8"/>
+    {% if article.style %}
+      <style type="text/css">
+        {{ article.style }}
+      </style>
+    {% endif %}
+  </head>
+  
+  <body>
+    {% block top %}
+      <div id="logo"> 
+        <img src="/media/images/artran/artran_logo.jpg" alt="artran logo" />
+      </div>
+      <div id="banner">
+        <img src="/media/images/banner1.jpg" alt="banner" />
+        <img id="buttons" src="/media/images/button_area.jpg" alt="buttons" usemap ="#buttonmap" />
+        <map id="buttonmap" name="buttonmap">
+          <area shape="circle" coords="65, 27, 16" href="/articles/article/contact/" alt="contact us" title="contact us"/>
+        </map>
+      </div>
+    {% endblock %}
+    
+    {% block menu %}
+      <div id="menu">
+        <div id="site-nav">
+          <ul>
+            {% for section in sections %}
+              {# Only show sections that have articles #}
+              {% ifnotequal section.articles.count 0 %}
+                <li {% ifequal section article.section %}id="current-section"{% endifequal %}>
+                  <a href="{% url cms.views.section section.slug %}">{{ section.name }}</a>
+                </li>
+              {% endifnotequal %}
+            {% endfor %}
+          </ul>
+        </div>
+
+        {% if this_section %}
+          <div id="section-links">
+            <h3>in this section</h3>
+            <ul>
+              {% for article_item in this_section %}
+                <li {% ifequal article_item article %}id="current-article"{% endifequal %}>
+                  <a href="/articles/article/{{ article_item.slug }}">{{ article_item.title }}</a>
+                </li>
+              {% endfor %}
+            </ul> 
+          </div>
+        {% endif %}
+        
+        <div id="related-links"> 
+          <h3>partners</h3> 
+          <ul> 
+            <li><a href="http://www.tivisual.co.uk/" target="_blank">Ti-Visual</a></li> 
+            <li><a href="http://www.base360.com/" target="_blank">Base 360</a></li> 
+          </ul> 
+        </div>  
+      </div>
+    {% endblock %}
+    
+    {% block content %}{% endblock %}
+    
+    {% block contact %}
+      <div id="contact">
+        <img src="/media/images/contactus.jpg" alt="contact us" />
+          <form action="/utils/contact-form/" method="post" accept-charset="utf-8">
+            <ul {% if session.warning and not session.name %}class="warn"{% endif %}>
+              <li>Name</li>
+              <li><input type="text" name="name" id="name" value="{{ session.name }}"/></li>
+            </ul>
+            <ul {% if session.warning and not session.email %}class="warn"{% endif %}>
+              <li>Email</li>
+              <li><input type="text" name="email" id="email" value="{{ session.email }}"/></li>
+            </ul>
+            <ul {% if session.warning and not session.message %}class="warn"{% endif %}>
+              <li>Message</li>
+              <li><textarea name="message" rows="5" cols="18">{{ session.message }}</textarea></li>
+            </ul>
+            <p class="warn">{{ session.warning }}</p>
+            <p>
+              Note: This information will only be used to reply to your feedback.
+              We respect your privacy and will never abuse your email address or
+              other personal information.
+            </p>
+            <ul><li><input type="submit" value="Send"/></li></ul>
+          </form>
+        <img id="bottom-corner" src="/media/images/contact_bcorner.jpg" alt="bottom corner" />
+      </div>
+    {% endblock %}
+    
+    {% block footer %}
+      <div id="footer">
+        <div id="copyright">
+          <a href='&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#97;&#114;&#116;&#114;&#97;&#110;&#46;&#99;&#111;&#46;&#117;&#107;?subject=Question about Artran ltd'>
+            &copy;2004 - 2008 Ray Tran
+          </a>
+        </div>
+        <div id="valid-code">
+          <a href="http://www.djangoproject.com" target="_blank">
+            <img src="/media/images/logos/djangosite100x25_grey.gif"
+              alt="Powered by Django" title="Powered by Django" />
+          </a>
+        
+          <a href="http://validator.w3.org/check/referer" class="validate">
+            <img src="/media/images/logos/valid-xhtml10.png" alt="Valid XHTML 1.0!" title="Valid XHTML 1.0!" />
+          </a>
+        
+          <a href="http://jigsaw.w3.org/css-validator/check/referer" class="validate">
+            <img src="/media/images/logos/vcss.png" alt="Valid CSS!" title="Valid CSS!" />
+          </a>
+        
+          <!--
+          <a href="http://www.linkedin.com/in/artran" target="_blank">
+            <img src="http://www.linkedin.com/img/webpromo/btn_linkedin_120x30.gif"
+              alt="View Ray Tran's profile on LinkedIn" title="View Ray Tran's profile on LinkedIn" />
+          </a>
+          -->
+        </div>
+      </div>
+    {% endblock %}
+  </body>
+</html>
+<!--
+  {% debug %}
+  -->

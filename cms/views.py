@@ -1,0 +1,41 @@
+from django.shortcuts import render_to_response, get_object_or_404
+from django.http import Http404
+from django.template import RequestContext
+
+from datetime import datetime
+
+from cms.models import *
+
+article_live_test = "(live_from is null or live_from < %s) and (live_to is null or live_to > %s)"
+
+def index(request):
+    first_section = Section.objects.filter(live=True)[0]
+    return section(request, first_section.slug)
+
+def section(request, slug):
+    now = datetime.now()
+    live_articles = Article.objects.filter(section__slug=slug).extra(where=[article_live_test], params=[now, now])
+    
+    # Try to get a "home_page" article, if there are none use any article
+    articles = live_articles.filter(home_page=True).order_by('?')
+    if articles.count() > 0:
+        the_article = articles[0]
+    else:
+        the_article = live_articles.order_by('?')[0]
+    
+    
+    return article(request, the_article.slug)
+
+def article(request, slug):
+    article = get_object_or_404(Article, slug=slug)
+    if not article.is_live():
+        raise Http404
+    
+    sections = Section.objects.filter(live=True)
+    now = datetime.now()
+    live_articles = Article.objects.filter(section=article.section).extra(where=[article_live_test], params=[now, now])
+    features = live_articles.filter(feature=True)
+    
+    related = article.related.extra(where=[article_live_test], params=[now, now])
+    return render_to_response('cms/article.html', {'sections': sections, 'features': features,
+                              'article': article, 'related': related, 'this_section': live_articles, 'session': request.session})
