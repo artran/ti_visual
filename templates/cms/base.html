@@ -1,100 +1,67 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="author" content="Artran Ltd" />
-    <meta name="author" content="Ti-Visual Ltd" />
-    <meta http-equiv="Content-Style-Type" content="text/css"/>
-    <title>{% block title %}Ti-Visual ltd{% endblock %}</title>
-    <link rel="stylesheet" href="/media/css/artran.css" type="text/css" media="all" charset="utf-8"/>
-    {% if article.style %}
-      <style type="text/css">
-        {{ article.style }}
-      </style>
-    {% endif %}
-  </head>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" href="/media/css/ti-visual.css" type="text/css" charset="utf-8"/>
+	<title>Ti-Visual</title>
+</head>
+
+<body>
+  <div id="banner">
+    <img src="/media/images/header.gif" alt="Ti-Visual Ltd" title="Ti-Visual Ltd" />
+  </div>
   
-  <body>
-    {% block top %}
-      <div id="logo"> 
-        <img src="/media/images/artran/artran_logo.jpg" alt="artran logo" />
-      </div>
-      <div id="banner">
-        <img src="/media/images/banner1.jpg" alt="banner" />
-        <img id="buttons" src="/media/images/button_area.jpg" alt="buttons" usemap ="#buttonmap" />
-        <map id="buttonmap" name="buttonmap">
-          <area shape="circle" coords="65, 27, 16" href="/articles/article/contact/" alt="contact us" title="contact us"/>
-        </map>
-      </div>
-    {% endblock %}
-    
-    {% block menu %}
-      <div id="menu">
-        <div id="site-nav">
-          <ul>
-            {% for section in sections %}
-              {# Only show sections that have articles #}
-              {% ifnotequal section.articles.count 0 %}
-                <li {% ifequal section article.section %}id="current-section"{% endifequal %}>
-                  <a href="{% url cms.views.section section.slug %}">{{ section.name }}</a>
-                </li>
-              {% endifnotequal %}
-            {% endfor %}
-          </ul>
-        </div>
+  <div id="menu-bar">
+    <ul>
+      <li>home</li>
+      <li>about us</li>
+      <li>services</li>
+      <li>portfolio</li>
+      <li>resources</li>
+      <li>contact</li>
+    </ul>
+  </div>
+  
+  <div id="img-block">
+    <img src="/media/images/image.jpg" alt="Eye" />
+  </div>
+  
+  <div id="side-menu">
+    <ul>
+      <li>about us</li>
+      <li>services</li>
+      <li>portfolio</li>
+      <li>resources</li>
+      <li>contact</li>
+    </ul>
+  </div>
+  
+  <div id="text-area">
+    <p>
+      Ti-Visual is a creative services company based in Chester, specializing in communicating
+      complex information in visual form, backed by a professional graphic design service including
+      design for print, web and multimedia.
+    </p>
 
-        {% if this_section %}
-          <div id="section-links">
-            <h3>in this section</h3>
-            <ul>
-              {% for article_item in this_section %}
-                <li {% ifequal article_item article %}id="current-article"{% endifequal %}>
-                  <a href="/articles/article/{{ article_item.slug }}">{{ article_item.title }}</a>
-                </li>
-              {% endfor %}
-            </ul> 
-          </div>
-        {% endif %}
-        
-        <div id="related-links"> 
-          <h3>partners</h3> 
-          <ul> 
-            <li><a href="http://www.artran.co.uk/" target="_blank">Artran</a></li> 
-            <li><a href="http://www.base360.com/" target="_blank">Base 360</a></li> 
-          </ul> 
-        </div>  
-      </div>
-    {% endblock %}
-    
-    {% block content %}{% endblock %}
-    
-    {% block footer %}
-      <div id="footer">
-        <div id="copyright">
-          <a href='&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x69;&#x6e;&#x66;&#111;&#64;&#116;&#105;&#45;&#x76;&#105;&#x73;&#117;&#97;&#108;&#46;&#99;&#111;&#x2e;&#x75;&#x6b;?subject=Question about Ti-Visual ltd'>
-            &copy;2004 - 2008 Ti-Visual Ltd
-          </a>
-        </div>
-        <div id="valid-code">
-          <a href="http://www.djangoproject.com" target="_blank">
-            <img src="/media/images/logos/djangosite100x25_grey.gif"
-              alt="Powered by Django" title="Powered by Django" />
-          </a>
-        
-          <a href="http://validator.w3.org/check/referer" class="validate">
-            <img src="/media/images/logos/valid-xhtml10.png" alt="Valid XHTML 1.0!" title="Valid XHTML 1.0!" />
-          </a>
-        
-          <a href="http://jigsaw.w3.org/css-validator/check/referer" class="validate">
-            <img src="/media/images/logos/vcss.png" alt="Valid CSS!" title="Valid CSS!" />
-          </a>
-        </div>
-      </div>
-    {% endblock %}
-  </body>
+    <p>
+      Making the complex appear simple in a visual presentation is key to making information
+      accessible to everyone. Our aim is to effectively communicate your message to your target
+      audience
+    </p>
+  </div>
+  
+  <div id="extra-links">
+    <ul>
+      <li>Technical Illustration</li>
+      <li>Information Graphics</li>
+      <li>Graphic Design</li>
+    </ul>
+  </div>
+  
+  <div id="footer">
+    <img src="/media/images/footer.gif" alt="alt" title="title" />
+  </div>
+</body>
 </html>
-<!--
-  {% debug %}
-  -->

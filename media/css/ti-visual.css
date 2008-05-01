@@ -1,0 +1,92 @@
+/* undohtml.css */
+/* (CC) 2004 Tantek Celik. Some Rights Reserved.             */
+/*   http://creativecommons.org/licenses/by/2.0                   */
+/* This style sheet is licensed under a Creative Commons License. */
+
+/* Purpose: undo some of the default styling of common (X)HTML browsers */
+
+
+/* link underlines tend to make hypertext less readable, 
+   because underlines obscure the shapes of the lower halves of words */
+:link,:visited { text-decoration:none }
+
+/* no list-markers by default, since lists are used more often for semantics */
+ul,ol { list-style:none }
+
+/* avoid browser default inconsistent heading font-sizes */
+/* and pre/code too */
+h1,h2,h3,h4,h5,h6,pre,code { font-size:1em; }
+
+/* remove the inconsistent (among browsers) default ul,ol padding or margin  */
+/* the default spacing on headings does not match nor align with 
+   normal interline spacing at all, so let's get rid of it. */
+/* zero out the spacing around pre, form, body, html, p, blockquote as well */
+/* form elements are oddly inconsistent, and not quite CSS emulatable. */
+/*  nonetheless strip their margin and padding as well */
+ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input
+{ margin:0; padding:0 }
+
+/* whoever thought blue linked image borders were a good idea? */
+a img,:link img,:visited img { border:none }
+img[usemap] {border: none;} /* This should be in the rule above but IE6 gets confused by it */
+
+/* de-italicize address */
+address { font-style:normal; }
+
+/* Un-muddy the input fields */
+input[text], textarea { background-color: white; }
+
+/* Main styles */
+body {
+  width: 100%;
+  color: #2f3b76;
+  font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
+  font-size: 80%;
+}
+
+#menu-bar {
+  width: 749px;
+  background-color: #4c05a6;
+  color: white;
+  margin: 2px 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#menu-bar ul {
+  padding-left: 210px;
+}
+
+#menu-bar li {
+  display: inline;
+}
+
+#side-menu {
+  background-color: #54575e;
+  color: white;
+  margin: 0 0 0 8px;
+  width: 235px;
+}
+
+#text-area {
+  background-color: #54575e;
+  color: white;
+  margin: 0 8px 0 243px;
+  width: 514px;
+}
+
+#extra-links ul {
+  background-color: #54575e;
+  width: 514px;
+  padding-left: 243px;
+}
+
+#extra-links li {
+  display: inline;
+  background-color: #5995da;
+  color: white;
+  font-size: 12px;
+  width: 154px;
+  height: 15px;
+  margin-top: 2px;
+}
