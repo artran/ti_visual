@@ -57,7 +57,7 @@ body {
 
 #menu-bar {
   width: 765px;
-  height: 19px;
+  height: 17px;
   background-image: url(/media/images/menu_bar.jpg);
   background-repeat: repeat-y;
   background-color: #4c05a6;
@@ -65,7 +65,7 @@ body {
   font-size: 12px;
   font-weight: bold;
   margin: 0;
-  padding: 0;
+  padding-top: 2px;
 }
 
 #menu-bar ul {
@@ -74,11 +74,13 @@ body {
 }
 
 #menu-bar li {
-  display: inline;
+  display: block;
+  float: left;
+  width: 90px;
 }
 
 #img-block {
-  height: 249px;
+  height: 253px;
 }
 
 #content {
@@ -87,31 +89,57 @@ body {
 	background-repeat: repeat-y;
 }
 
-#text-area {
-  color: white;
-  margin: 0 8px 0 243px;
-  width: 514px;
-}
-
 #side-menu {
-  position: absolute;
-  top: 0;
   color: white;
   margin: 0 0 0 8px;
   width: 235px;
+  border-top: 2px solid white;
 }
 
-#extra-links ul {
+#side-menu li {
+  height: 36px;
+  margin: 14px 0 14px 40px;
+}
+
+#text-area {
+  position: absolute;
+  top: 0;
+  color: white;
+  margin: 0 8px 0 243px;
   width: 514px;
-  padding-left: 243px;
+  border-top: 2px solid white;
+  line-height: 160%;
 }
 
-#extra-links li {
-  display: inline;
+#text-area p {
+  margin: 14px 9px 2em 0;
+}
+
+.emphasis {
+  font-size: 130%;
+  padding-right: 0.7ex;
+}
+
+#extra-links {
+  margin-left: 243px;
+  width: 514px;
+  height: 17px;
+}
+
+#extra-links p {
+  float: left;
   background-color: #5995da;
   color: white;
   font-size: 12px;
   width: 154px;
   height: 15px;
-  margin-top: 2px;
+  margin-right: 17px;
+  text-align: center;
+  border-top: 2px solid white;
+}
+
+#right-image {
+  position: absolute;
+  top: 25px;
+  left: 800px;
 }
