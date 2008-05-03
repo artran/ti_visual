@@ -36,6 +36,12 @@ address { font-style:normal; }
 /* Un-muddy the input fields */
 input[text], textarea { background-color: white; }
 
+img {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
 /* Main styles */
 body {
   margin: 20px 0 0 20px;
@@ -46,14 +52,12 @@ body {
 }
 
 #banner {
-  padding: 0;
-  margin: 0;
-  border: 1px solid red;
+  height: 65px;
 }
 
 #menu-bar {
   width: 765px;
-  height: 15px;
+  height: 19px;
   background-image: url(/media/images/menu_bar.jpg);
   background-repeat: repeat-y;
   background-color: #4c05a6;
@@ -73,22 +77,31 @@ body {
   display: inline;
 }
 
-#side-menu {
-  background-color: #54575e;
-  color: white;
-  margin: 0 0 0 8px;
-  width: 235px;
+#img-block {
+  height: 249px;
+}
+
+#content {
+	position: relative;
+	background-image: url(/media/images/content_bg.jpg);
+	background-repeat: repeat-y;
 }
 
 #text-area {
-  background-color: #54575e;
   color: white;
   margin: 0 8px 0 243px;
   width: 514px;
 }
 
+#side-menu {
+  position: absolute;
+  top: 0;
+  color: white;
+  margin: 0 0 0 8px;
+  width: 235px;
+}
+
 #extra-links ul {
-  background-color: #54575e;
   width: 514px;
   padding-left: 243px;
 }
