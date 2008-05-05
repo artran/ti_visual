@@ -79,6 +79,14 @@ body {
   width: 90px;
 }
 
+#menu-bar a:link, #menu-bar a:visited {
+  color: white;
+}
+
+#menu-bar a:hover {
+  color: #7bc6fc;
+}
+
 #img-block {
   height: 253px;
 }
