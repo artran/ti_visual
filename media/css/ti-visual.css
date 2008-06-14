@@ -77,7 +77,7 @@ body {
 #menu-bar li {
   display: block;
   float: left;
-  width: 90px;
+  margin-left: 10px;
 }
 
 #menu-bar a:link, #menu-bar a:visited {

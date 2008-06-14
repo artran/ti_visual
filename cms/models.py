@@ -10,6 +10,8 @@ class Section(models.Model):
     name = models.CharField(max_length=50, unique=True)
     live = models.BooleanField(default=False)
     slug = models.SlugField(prepopulate_from=('name',), help_text='Auto generated')
+    icon_img = models.ImageField(upload_to='icons', help_text='115 x 72 rollover images')
+    block_img = models.ImageField(upload_to='block-images', help_text='765 x 253 image')
     def __str__(self):
         if self.live:
             return self.name

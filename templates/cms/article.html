@@ -1,112 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% extends "cms/base.html" %}
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <link rel="stylesheet" href="/media/css/ti-visual.css" type="text/css" charset="utf-8"/>
-  <style type="text/css">
-    a#about_us {
-      display: block;
-      height: 36px;
-      background: #54575e url(/media/images/icons/about_us.png) no-repeat left top;
-    }
+{% load markup cms_tags %}
 
-    a#about_us:hover { background-position: left bottom; }
+{% block title %}{{ block.super }} | {{ article.section.name }}{% endblock %}
 
-    a#services {
-      display: block;
-      height: 36px;
-      background: #54575e url(/media/images/icons/services.png) no-repeat left top;
-    }
-
-    a#services:hover {  background-position: left bottom; }
-
-    a#portfolio {
-      display: block;
-      height: 36px;
-      background: #54575e url(/media/images/icons/portfolio.png) no-repeat left top;
-    }
-
-    a#portfolio:hover { background-position: left bottom; }
-
-    a#resources {
-      display: block;
-      height: 36px;
-      background: #54575e url(/media/images/icons/resources.png) no-repeat left top;
-    }
-
-    a#resources:hover { background-position: left bottom; }
-
-    a#contact {
-      display: block;
-      height: 36px;
-      background: #54575e url(/media/images/icons/contact.png) no-repeat left top;
-    }
-
-    a#contact:hover {  background-position: left bottom; }
-  </style>
-  <title>Ti-Visual</title>
-</head>
-
-<body>
-  <div id="banner">
-    <img src="/media/images/header.gif" alt="Ti-Visual Ltd" title="Ti-Visual Ltd" />
+{% block body-text %}
+  <div id="text-area">
+      {{ article|add_images|markdown }}
   </div>
   
-  <div id="menu-bar">
-    <ul>
-      <li><a href="#">home</a></li>
-      <li><a href="#">about us</a></li>
-      <li><a href="#">services</a></li>
-      <li><a href="#">portfolio</a></li>
-      <li><a href="#">resources</a></li>
-      <li><a href="#">contact</a></li>
-    </ul>
+  <div id="extra-links">
+    <p>Technical Illustration</p>
+    <p>Information Graphics</p>
+    <p>Graphic Design</p>
   </div>
-  
-  <div id="img-block">
-    <img src="/media/images/image.jpg" alt="Eye" />
-  </div>
-
-  <div id="content">
-    <div id="side-menu">
-      <ul>
-        <li><a href="#" id="about_us">&nbsp;</a></li>
-        <li><a href="#" id="services">&nbsp;</a></li>
-        <li><a href="#" id="portfolio">&nbsp;</a></li>
-        <li><a href="#" id="resources">&nbsp;</a></li>
-        <li><a href="#" id="contact">&nbsp;</a></li>
-      </ul>
-    </div>
-    
-    <div id="text-area">
-      <p>
-        <span class="emphasis">Ti-Visual</span> is a creative services company based in Chester,
-        specializing in communicating complex information in visual form, backed by a professional
-        graphic design service including design for print, web and multimedia.
-      </p>
-
-      <p>
-        Making the complex appear simple in a visual presentation is key to making information
-        accessible to everyone. Our aim is to effectively communicate your message to your target
-        audience
-      </p>
-    </div>
-    
-    <div id="extra-links">
-      <p>Technical Illustration</p>
-      <p>Information Graphics</p>
-      <p>Graphic Design</p>
-    </div>
-  </div>
-  
-  <div id="right-image">
-    <img src="/media/images/vis_comm.gif" alt="visual communication" />
-  </div>
-  
-  <div id="footer">
-    <img src="/media/images/footer.gif" alt="alt" title="title" />
-  </div>
-</body>
-</html>
+</div>
+{% endblock %}

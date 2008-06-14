@@ -22,8 +22,7 @@ def section(request, slug):
         the_article = articles[0]
     else:
         the_article = live_articles.order_by('?')[0]
-    
-    
+    print the_article
     return article(request, the_article.slug)
 
 def article(request, slug):
