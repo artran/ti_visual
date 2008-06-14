@@ -44,8 +44,9 @@ img {
 
 /* Main styles */
 body {
-  margin: 20px 0 0 20px;
-  width: 100%;
+  position: relative;
+  margin: 20px auto 0 auto;
+  width: 765px;
   color: #2f3b76;
   font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
   font-size: 80%;
