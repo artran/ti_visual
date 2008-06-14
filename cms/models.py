@@ -12,11 +12,14 @@ class Section(models.Model):
     slug = models.SlugField(prepopulate_from=('name',), help_text='Auto generated')
     icon_img = models.ImageField(upload_to='icons', help_text='115 x 72 rollover images')
     block_img = models.ImageField(upload_to='block-images', help_text='765 x 253 image')
+    sort = models.SmallIntegerField(help_text='Lower number sort earlier.')
     def __str__(self):
         if self.live:
             return self.name
         else:
             return '%s (not live)' % self.name
+    class Meta:
+        ordering = ['sort']
     class Admin:
         pass
 

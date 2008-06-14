@@ -32,7 +32,7 @@
   <div id="menu-bar">
     <ul>
       {% for section in sections %}
-        <li><a href="#">{{ section }}</a></li>
+        <li><a href="{% url cms.views.section section.slug %}">{{ section }}</a></li>
       {% endfor %}
     </ul>
   </div>
@@ -45,7 +45,7 @@
     <div id="side-menu">
       <ul>
         {% for section in sections %}
-          <li><a href="#" id="{{ section.slug }}">&nbsp;</a></li>
+          <li><a href="{% url cms.views.section section.slug %}" id="{{ section.slug }}">&nbsp;</a></li>
         {% endfor %}
       </ul>
     </div>
