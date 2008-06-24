@@ -73,7 +73,6 @@ class Image(models.Model):
     height = models.IntegerField(null=True, blank=True)
     width = models.IntegerField(null=True, blank=True)
     image = models.ImageField(upload_to='cms_images', width_field='width', height_field='height', core=True)
-    article = models.ForeignKey(Article, edit_inline=models.STACKED, related_name='images')
     created_at = models.DateTimeField(blank=True, editable=False)
     created_by = models.ForeignKey(User, editable=False)
     
@@ -96,7 +95,21 @@ class Image(models.Model):
         return self.name
     class Admin:
         pass
+    class Meta:
+        abstract = True
+    #    unique_together = (('slug', 'article'),)
+
+class ArticleImage(Image):
+    article = models.ForeignKey(Article, edit_inline=models.STACKED, related_name='images')
     # I've comented this out after creation of the tables because it breaks the inline-editing in Articles.
     # As the uniqueness test is done in the db this shouldn't be an issue.
-    #class Meta:
-    #    unique_together = (('slug', 'article'),)
+    class Meta:
+        unique_together = (('slug', 'article'),)
+
+class SectionImage(Image):
+    section = models.ForeignKey(Section, edit_inline=models.STACKED, related_name='images')
+    # I've comented this out after creation of the tables because it breaks the inline-editing in Articles.
+    # As the uniqueness test is done in the db this shouldn't be an issue.
+    class Meta:
+        unique_together = (('slug', 'section'),)
+    
