@@ -103,13 +103,13 @@ class ArticleImage(Image):
     article = models.ForeignKey(Article, edit_inline=models.STACKED, related_name='images')
     # I've comented this out after creation of the tables because it breaks the inline-editing in Articles.
     # As the uniqueness test is done in the db this shouldn't be an issue.
-    class Meta:
-        unique_together = (('slug', 'article'),)
+    #class Meta:
+    #    unique_together = (('slug', 'article'),)
 
 class SectionImage(Image):
     section = models.ForeignKey(Section, edit_inline=models.STACKED, related_name='images')
-    # I've comented this out after creation of the tables because it breaks the inline-editing in Articles.
+    # I've comented this out after creation of the tables because it breaks the inline-editing in Sections.
     # As the uniqueness test is done in the db this shouldn't be an issue.
-    class Meta:
-        unique_together = (('slug', 'section'),)
+    #class Meta:
+    #    unique_together = (('slug', 'section'),)
     
