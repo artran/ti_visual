@@ -18,12 +18,9 @@ class Section(models.Model):
     def get_random_image_url(self):
         # If there are no alternate images or the random function picks 0 from an appropriately sized range
         if self.images.count() == 0 or random.randrange(self.images.count()+1) == 0:
-            print '0'
             return self.get_block_img_url()
         else:
             image = self.images.order_by('?')[0]
-            print image.name
-            print image.get_image_url()
             return image.get_image_url()
             
     def __str__(self):
