@@ -6,6 +6,8 @@ from datetime import datetime
 
 from cms.middleware import threadlocals
 
+import random
+
 class Section(models.Model):
     name = models.CharField(max_length=50, unique=True)
     live = models.BooleanField(default=False)
@@ -13,6 +15,17 @@ class Section(models.Model):
     icon_img = models.ImageField(upload_to='icons', help_text='115 x 72 rollover images')
     block_img = models.ImageField(upload_to='block-images', help_text='765 x 253 image')
     sort = models.SmallIntegerField(help_text='Lower number sort earlier.')
+    def get_random_image_url(self):
+        # If there are no alternate images or the random function picks 0 from an appropriately sized range
+        if self.images.count() == 0 or random.randrange(self.images.count()+1) == 0:
+            print '0'
+            return self.get_block_img_url()
+        else:
+            image = self.images.order_by('?')[0]
+            print image.name
+            print image.get_image_url()
+            return image.get_image_url()
+            
     def __str__(self):
         if self.live:
             return self.name
@@ -93,14 +106,14 @@ class Image(models.Model):
         return '/media/%s' % self.get_image_url()
     def __str__(self):
         return self.name
-    class Admin:
-        pass
     class Meta:
         abstract = True
     #    unique_together = (('slug', 'article'),)
 
 class ArticleImage(Image):
     article = models.ForeignKey(Article, edit_inline=models.STACKED, related_name='images')
+    class Admin:
+        pass
     # I've comented this out after creation of the tables because it breaks the inline-editing in Articles.
     # As the uniqueness test is done in the db this shouldn't be an issue.
     #class Meta:
@@ -108,6 +121,8 @@ class ArticleImage(Image):
 
 class SectionImage(Image):
     section = models.ForeignKey(Section, edit_inline=models.STACKED, related_name='images')
+    class Admin:
+        pass
     # I've comented this out after creation of the tables because it breaks the inline-editing in Sections.
     # As the uniqueness test is done in the db this shouldn't be an issue.
     #class Meta:
