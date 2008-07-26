@@ -30,3 +30,26 @@ LANGUAGE_CODE = 'en-gb'
 SECRET_KEY = '50 characters or so'
 
 INTERNAL_IPS = ('127.0.0.1', '192.168.0.74',)
+
+MIDDLEWARE_CLASSES = (
+    'django.middleware.gzip.GZipMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
+    'cms.middleware.threadlocals.ThreadLocals',
+    #'utils.middleware.sql_log.SQLLogMiddleware',
+)
+
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.admin',
+    #'django.contrib.markup',
+    'django.contrib.redirects',
+    'cms',
+    'utils',
+)

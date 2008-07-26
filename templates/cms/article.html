@@ -1,12 +1,14 @@
 {% extends "cms/base.html" %}
 
-{% load markup cms_tags %}
+{% load cms_tags %}
 
 {% block title %}{{ block.super }} | {{ article.section.name }}{% endblock %}
 
 {% block body-text %}
   <div id="text-area">
-      {{ article|add_images|markdown }}
+      {% autoescape off %}
+        {{ article|add_images }}
+      {% endautoescape %}
   </div>
   
   <div id="extra-links">

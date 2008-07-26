@@ -35,7 +35,7 @@ class Section(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=100)
-    body = models.TextField(help_text='Use html or markdown syntax for the content of the story. For local images use {{ IMAGE[&lt;SLUG&gt;] }} for the url.')
+    body = models.TextField(help_text='Use html for the content of the story. For local images use {{ IMAGE[&lt;SLUG&gt;] }} for the url.')
     style = models.TextField('Extra styling', blank=True)
     live_from = models.DateTimeField(blank=True, null=True, default=None, help_text='Blank means live immediately')
     live_to = models.DateTimeField(blank=True, null=True, default=None, help_text='Blank means live until forever')
@@ -100,7 +100,7 @@ class Image(models.Model):
         super(Image, self).save()
         
     def get_absolute_url(self):
-        return '/media/%s' % self.get_image_url()
+        return '%s' % self.get_image_url()
     def __str__(self):
         return self.name
     class Meta:

@@ -30,33 +30,10 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.load_template_source',
 )
 
-MIDDLEWARE_CLASSES = (
-    'django.middleware.gzip.GZipMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.doc.XViewMiddleware',
-    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
-    'cms.middleware.threadlocals.ThreadLocals',
-    #'utils.middleware.sql_log.SQLLogMiddleware',
-)
-
 ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     os.path.join(DIRNAME, 'templates'),
-)
-
-INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.admin',
-    'django.contrib.markup',
-    'django.contrib.redirects',
-    'cms',
-    'utils',
 )
 
 # Load the local settings
