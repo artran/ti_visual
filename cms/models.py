@@ -17,7 +17,7 @@ class LiveArticleManager(models.Manager):
     """Return only articles that are live"""
     def get_query_set(self):
         now = datetime.now()
-        return super(LiveArticleManager, self).get_query_set().extra(where=[Article.ARTICLE_LIVE_TEST], params=[now, now])
+        return super(LiveArticleManager, self).get_query_set().extra(where=[Article.ARTICLE_LIVE_TEST], params=[now, now]).filter(section__live=True)
 
 class Section(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -73,7 +73,7 @@ class Article(models.Model):
     def is_live(self):
         'Returns True if now is between live_from and live_to'
         now = datetime.now()
-        return (self.live_from is None or self.live_from < now) and (self.live_to is None or self.live_to > now)
+        return self.section.live == True and (self.live_from is None or self.live_from < now) and (self.live_to is None or self.live_to > now)
     
     # Set the creator and last_edited_by when appropriate
     def save(self):

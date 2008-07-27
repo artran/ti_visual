@@ -33,6 +33,6 @@ def article(request, slug):
     live_articles = Article.live_objects.all()
     features = live_articles.filter(feature=True)
     
-    related = article.related.extra(where=[Article.ARTICLE_LIVE_TEST], params=[now, now])
+    related = article.related.extra(where=[Article.ARTICLE_LIVE_TEST], params=[now, now]).filter(section__live=True)
     return render_to_response('cms/article.html', {'sections': sections, 'features': features,
                               'article': article, 'related': related, 'this_section': live_articles, 'session': request.session})
