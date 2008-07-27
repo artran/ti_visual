@@ -70,8 +70,13 @@ class Article(models.Model):
     objects = models.Manager() # If this isn't first then non-live articles can't edited in the admin interface
     live_objects = LiveArticleManager()
     
+    def get_live_related(self):
+        'Return all of the related Articles which are live'
+        now = datetime.now()
+        return self.related.extra(where=[self.ARTICLE_LIVE_TEST], params=[now, now]).filter(section__live=True)
+    
     def is_live(self):
-        'Returns True if now is between live_from and live_to'
+        'Returns True if now is between live_from and live_to and the Section is live'
         now = datetime.now()
         return self.section.live == True and (self.live_from is None or self.live_from < now) and (self.live_to is None or self.live_to > now)
     

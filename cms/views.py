@@ -2,8 +2,6 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http import Http404
 from django.template import RequestContext
 
-from datetime import datetime
-
 from cms.models import *
 
 def index(request):
@@ -11,7 +9,6 @@ def index(request):
     return section(request, first_section.slug)
 
 def section(request, slug):
-    now = datetime.now()
     live_articles = Article.live_objects.filter(section__slug=slug)
     
     # Try to get a "home_page" article, if there are none use any article
@@ -29,10 +26,9 @@ def article(request, slug):
         raise Http404
     
     sections = Section.live_objects.all()
-    now = datetime.now()
     live_articles = Article.live_objects.all()
     features = live_articles.filter(feature=True)
     
-    related = article.related.extra(where=[Article.ARTICLE_LIVE_TEST], params=[now, now]).filter(section__live=True)
+    related = article.get_live_related()
     return render_to_response('cms/article.html', {'sections': sections, 'features': features,
                               'article': article, 'related': related, 'this_section': live_articles, 'session': request.session})
