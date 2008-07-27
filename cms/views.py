@@ -6,15 +6,13 @@ from datetime import datetime
 
 from cms.models import *
 
-article_live_test = "(live_from is null or live_from < %s) and (live_to is null or live_to > %s)"
-
 def index(request):
-    first_section = Section.objects.filter(live=True)[0]
+    first_section = Section.live_objects.all()[0]
     return section(request, first_section.slug)
 
 def section(request, slug):
     now = datetime.now()
-    live_articles = Article.objects.filter(section__slug=slug).extra(where=[article_live_test], params=[now, now])
+    live_articles = Article.live_objects.filter(section__slug=slug)
     
     # Try to get a "home_page" article, if there are none use any article
     articles = live_articles.filter(home_page=True).order_by('?')
@@ -30,11 +28,11 @@ def article(request, slug):
     if not article.is_live():
         raise Http404
     
-    sections = Section.objects.filter(live=True)
+    sections = Section.live_objects.all()
     now = datetime.now()
-    live_articles = Article.objects.filter(section=article.section).extra(where=[article_live_test], params=[now, now])
+    live_articles = Article.live_objects.all()
     features = live_articles.filter(feature=True)
     
-    related = article.related.extra(where=[article_live_test], params=[now, now])
+    related = article.related.extra(where=[Article.ARTICLE_LIVE_TEST], params=[now, now])
     return render_to_response('cms/article.html', {'sections': sections, 'features': features,
                               'article': article, 'related': related, 'this_section': live_articles, 'session': request.session})

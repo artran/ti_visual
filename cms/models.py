@@ -8,6 +8,17 @@ from cms.middleware import threadlocals
 
 import random
 
+class LiveSectionManager(models.Manager):
+    """Return only sections that are live"""
+    def get_query_set(self):
+        return super(LiveSectionManager, self).get_query_set().filter(live=True)
+
+class LiveArticleManager(models.Manager):
+    """Return only articles that are live"""
+    def get_query_set(self):
+        now = datetime.now()
+        return super(LiveArticleManager, self).get_query_set().extra(where=[Article.ARTICLE_LIVE_TEST], params=[now, now])
+
 class Section(models.Model):
     name = models.CharField(max_length=50, unique=True)
     live = models.BooleanField(default=False)
@@ -15,6 +26,11 @@ class Section(models.Model):
     icon_img = models.ImageField(upload_to='icons', help_text='115 x 72 rollover images')
     block_img = models.ImageField(upload_to='block-images', help_text='765 x 253 image')
     sort = models.SmallIntegerField(help_text='Lower number sort earlier.')
+    
+    # Managers
+    objects = models.Manager() # If this isn't first then non-live sections can't edited in the admin interface
+    live_objects = LiveSectionManager()
+
     def get_random_image_url(self):
         # If there are no alternate images or the random function picks 0 from an appropriately sized range
         if self.images.count() == 0 or random.randrange(self.images.count()+1) == 0:
@@ -34,6 +50,7 @@ class Section(models.Model):
         pass
 
 class Article(models.Model):
+    ARTICLE_LIVE_TEST = "(live_from is null or live_from < %s) and (live_to is null or live_to > %s)"
     title = models.CharField(max_length=100)
     body = models.TextField(help_text='Use html for the content of the story. For local images use {{ IMAGE[&lt;SLUG&gt;] }} for the url.')
     style = models.TextField('Extra styling', blank=True)
@@ -48,6 +65,11 @@ class Article(models.Model):
     related = models.ManyToManyField('self', filter_interface=models.HORIZONTAL, blank=True)
     slug = models.SlugField(prepopulate_from=('title',), unique=True, help_text='Auto generated')
     section = models.ForeignKey(Section, related_name='articles')
+    
+    # Managers
+    objects = models.Manager() # If this isn't first then non-live articles can't edited in the admin interface
+    live_objects = LiveArticleManager()
+    
     def is_live(self):
         'Returns True if now is between live_from and live_to'
         now = datetime.now()
@@ -100,12 +122,11 @@ class Image(models.Model):
         super(Image, self).save()
         
     def get_absolute_url(self):
-        return '%s' % self.get_image_url()
+        return self.get_image_url()
     def __str__(self):
         return self.name
     class Meta:
         abstract = True
-    #    unique_together = (('slug', 'article'),)
 
 class ArticleImage(Image):
     article = models.ForeignKey(Article, edit_inline=models.STACKED, related_name='images')
