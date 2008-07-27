@@ -6,9 +6,7 @@
 
 {% block body-text %}
   <div id="text-area">
-      {% autoescape off %}
-        {{ article|add_images }}
-      {% endautoescape %}
+    {{ article|add_images|safe }}
   </div>
   
   <div id="extra-links">
