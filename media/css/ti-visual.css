@@ -45,7 +45,7 @@ img {
 /* Main styles */
 body {
   position: relative;
-  margin: 20px auto 0 auto;
+  margin: 20px auto 20px auto;
   width: 765px;
   color: #2f3b76;
   font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
@@ -152,4 +152,14 @@ body {
   position: absolute;
   top: 25px;
   left: 800px;
+}
+
+#footer {
+  background-image: url(/media/images/footer_bg.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+
+br.clear {
+  clear: both;
 }
