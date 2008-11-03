@@ -93,12 +93,13 @@ body {
 }
 
 #content {
-	position: relative;
+	float: left;
 	background-image: url(/media/images/content_bg.jpg);
 	background-repeat: repeat-y;
 }
 
 #side-menu {
+  float: left;
   color: white;
   margin: 0 0 0 8px;
   width: 235px;
@@ -111,10 +112,10 @@ body {
 }
 
 #text-area {
-  position: absolute;
+  float: right;
   top: 0;
   color: white;
-  margin: 0 8px 0 243px;
+  margin: 0 8px 0 0;
   width: 514px;
   border-top: 2px solid white;
   line-height: 160%;
