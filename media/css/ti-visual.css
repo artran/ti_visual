@@ -156,6 +156,7 @@ body {
 
 #footer {
   background-image: url(/media/images/footer_bg.png);
+  background-color: #54575E;
 	background-repeat: no-repeat;
 	background-position: center bottom;
 }
