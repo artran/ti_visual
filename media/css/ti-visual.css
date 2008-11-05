@@ -130,9 +130,33 @@ body {
   padding-right: 0.7ex;
 }
 
+#img-block {
+  display: table;
+  width: 100%;
+}
+
 ol#article-menu {
-  margin-left: 2em;
+  display: table-cell; vertical-align: middle;
+  padding-left: 4px;
   padding-top: 0.5em;
+}
+
+ol#article-menu li {
+  display: block;
+  width: 150px;
+  background-color: #54575e;
+  opacity: 0.5;
+  margin: 5px;
+  padding: 5px 0 5px 15px;
+}
+
+ol#article-menu a:link, ol#article-menu a:visited {
+  color: white;
+  display: block;
+}
+
+ol#article-menu li:hover {
+  opacity: 0.75;
 }
 
 #extra-links {
@@ -151,6 +175,15 @@ ol#article-menu {
   margin-right: 17px;
   text-align: center;
   border-top: 2px solid white;
+}
+
+#extra-links a:link, #extra-links a:visited {
+  color: white;
+  display: block;
+}
+
+#extra-links a:hover {
+  color: #4F03AB;
 }
 
 #right-image {
