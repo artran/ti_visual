@@ -137,8 +137,7 @@ body {
 
 ol#article-menu {
   display: table-cell; vertical-align: middle;
-  padding-left: 4px;
-  padding-top: 0.5em;
+  margin-top: 1em;
 }
 
 ol#article-menu li {
@@ -146,7 +145,7 @@ ol#article-menu li {
   width: 150px;
   background-color: #54575e;
   opacity: 0.5;
-  margin: 5px;
+  margin: 5px 0 5px 9px;
   padding: 5px 0 5px 15px;
   text-transform: lowercase;
 }

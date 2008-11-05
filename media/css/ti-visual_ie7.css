@@ -1,3 +1,11 @@
 #text-area {
   margin-left: 0;
 }
+
+ol#article-menu li {
+  filter: alpha(opacity=50);
+}
+
+ol#article-menu li:hover {
+  filter: alpha(opacity=75);
+}
