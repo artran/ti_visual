@@ -148,6 +148,7 @@ ol#article-menu li {
   opacity: 0.5;
   margin: 5px;
   padding: 5px 0 5px 15px;
+  text-transform: lowercase;
 }
 
 ol#article-menu a:link, ol#article-menu a:visited {
@@ -175,6 +176,7 @@ ol#article-menu li:hover {
   margin-right: 17px;
   text-align: center;
   border-top: 2px solid white;
+  text-transform: lowercase;
 }
 
 #extra-links a:link, #extra-links a:visited {
