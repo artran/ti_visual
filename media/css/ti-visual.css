@@ -130,6 +130,11 @@ body {
   padding-right: 0.7ex;
 }
 
+ol#article-menu {
+  margin-left: 2em;
+  padding-top: 0.5em;
+}
+
 #extra-links {
   margin-left: 243px;
   width: 514px;

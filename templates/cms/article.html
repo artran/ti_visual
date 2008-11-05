@@ -11,10 +11,18 @@
 </div>
 {% endblock %}
 
+{% block article-menu %}
+  <ol id='article-menu'>
+    {% for article in this_section %}
+      <li><a href='{% url cms.views.article article.slug %}'>{{ article.title }}</a></li>
+    {% endfor %}
+  </ol>
+{% endblock %}
+
 {% block related %}
   <div id="extra-links">
-    <p>Technical Illustration</p>
-    <p>Information Graphics</p>
-    <p>Graphic Design</p>
+    {% for rel in related %}
+      <p><a href='{% url cms.views.article rel.slug %}'>{{ rel.title }}</a></p>
+    {% endfor %}
   </div>
 {% endblock %}

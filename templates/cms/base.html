@@ -18,6 +18,10 @@
 
       a#{{ section.slug }}:hover { background-position: left bottom; }
     {% endfor %}
+    
+    #img-block {
+      background-image: url({{ article.section.get_random_image_url }});
+    }
   </style>
   {% if article.style %}
     <style type="text/css">
@@ -41,7 +45,7 @@
   </div>
   
   <div id="img-block">
-    <img src="{{ article.section.get_random_image_url }}" alt="Image" />
+    {% block article-menu %}{% endblock %}
   </div>
 
   <div id="content">

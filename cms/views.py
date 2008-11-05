@@ -28,7 +28,8 @@ def article(request, slug):
     sections = Section.live_objects.all()
     live_articles = Article.live_objects.all()
     features = live_articles.filter(feature=True)
+    this_section = live_articles.filter(section=article.section)
     
     related = article.get_live_related()
     return render_to_response('cms/article.html', {'sections': sections, 'features': features,
-                              'article': article, 'related': related, 'this_section': live_articles, 'session': request.session})
+                              'article': article, 'related': related, 'this_section': this_section, 'session': request.session})
