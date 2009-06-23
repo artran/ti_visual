@@ -35,10 +35,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
-    'cms.middleware.threadlocals.ThreadLocals',
+    'mingus.middleware.threadlocals.ThreadLocals',
     #'utils.middleware.sql_log.SQLLogMiddleware',
 )
 
@@ -50,6 +51,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     #'django.contrib.markup',
     'django.contrib.redirects',
-    'cms',
+    'mingus',
     'utils',
 )
