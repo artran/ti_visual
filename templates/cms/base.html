@@ -13,7 +13,7 @@
       a#{{ section.slug }} {
         display: block;
         height: 36px;
-        background: #54575e url({{ section.get_icon_img_url }}) no-repeat left top;
+        background: #54575e url({{ section.thumbnail_img.url }}) no-repeat left top;
       }
 
       a#{{ section.slug }}:hover { background-position: left bottom; }
@@ -39,7 +39,7 @@
   <div id="menu-bar">
     <ul>
       {% for section in sections %}
-        <li><a href="{% url cms.views.section section.slug %}">{{ section }}</a></li>
+        <li><a href="{% url mingus.views.section section.slug %}">{{ section }}</a></li>
       {% endfor %}
     </ul>
   </div>
@@ -52,7 +52,7 @@
     <div id="side-menu">
       <ul>
         {% for section in sections %}
-          <li><a href="{% url cms.views.section section.slug %}" id="{{ section.slug }}">&nbsp;</a></li>
+          <li><a href="{% url mingus.views.section section.slug %}" id="{{ section.slug }}">&nbsp;</a></li>
         {% endfor %}
       </ul>
     </div>

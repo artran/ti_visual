@@ -13,16 +13,12 @@ urlpatterns = patterns('',
 
 urlpatterns += patterns('',
     # Admin:
-    (r'^admin/(.*)', admin.site.root),
+    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    (r'^admin/', include(admin.site.urls)),
 )
 
 # Static content
 if 'runserver' in sys.argv:
     urlpatterns += patterns('',
-        (r'^media/css/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media/css'}),
-        (r'^media/js/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media/js'}),
-        (r'^media/images/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media/images'}),
-        (r'^media/cms_images/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media/cms_images'}),
-        (r'^media/icons/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media/icons'}),
-        (r'^media/block-images/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media/block-images'}),
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media'}),
     )
