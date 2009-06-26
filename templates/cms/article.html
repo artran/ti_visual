@@ -8,12 +8,11 @@
   <div id="text-area">
     {{ article|add_images|safe }}
   </div>
-</div>
 {% endblock %}
 
 {% block article-menu %}
   <ol id='article-menu'>
-    {% for article in this_section %}
+    {% for article in in_this_section %}
       <li><a href='{% url mingus.views.article article.slug %}'>{{ article.title }}</a></li>
     {% endfor %}
   </ol>

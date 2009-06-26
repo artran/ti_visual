@@ -8,21 +8,23 @@
   <!--[if lte IE 7]>
     <link rel="stylesheet" href="/media/css/ti-visual_ie7.css" type="text/css" charset="utf-8"/>
   <![endif]-->
-  <style type="text/css">
-    {% for section in sections %}
-      a#{{ section.slug }} {
-        display: block;
-        height: 36px;
-        background: #54575e url({{ section.thumbnail_img.url }}) no-repeat left top;
-      }
+  {% block extra-styling %}
+    <style type="text/css">
+      {% for section in sections %}
+        a#{{ section.slug }} {
+          display: block;
+          height: 36px;
+          background: #54575e url({{ section.thumbnail_img.url }}) no-repeat left top;
+        }
 
-      a#{{ section.slug }}:hover { background-position: left bottom; }
-    {% endfor %}
+        a#{{ section.slug }}:hover { background-position: left bottom; }
+      {% endfor %}
     
-    #img-block {
-      background-image: url({{ article.section.get_random_image_url }});
-    }
-  </style>
+      #img-block {
+        background-image: url({{ article.section.get_random_image_url }});
+      }
+    </style>
+  {% endblock %}
   {% if article.style %}
     <style type="text/css">
       {{ article.style }}
@@ -36,28 +38,32 @@
     <img src="/media/images/header.gif" alt="Ti-Visual Ltd" title="Ti-Visual Ltd" />
   </div>
   
-  <div id="menu-bar">
-    <ul>
-      {% for section in sections %}
-        <li><a href="{% url mingus.views.section section.slug %}">{{ section }}</a></li>
-      {% endfor %}
-    </ul>
-  </div>
+  {% block menu-bar %}
+    <div id="menu-bar">
+      <ul>
+        {% for section in sections %}
+          <li><a href="{% url mingus.views.section section.slug %}">{{ section }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endblock %}
   
   <div id="img-block">
     {% block article-menu %}{% endblock %}
   </div>
 
   <div id="content">
-    <div id="side-menu">
-      <ul>
-        {% for section in sections %}
-          <li><a href="{% url mingus.views.section section.slug %}" id="{{ section.slug }}">&nbsp;</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-    
+    {% block side-menu %}
+      <div id="side-menu">
+        <ul>
+          {% for section in sections %}
+            <li><a href="{% url mingus.views.section section.slug %}" id="{{ section.slug }}">&nbsp;</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endblock %}
     {% block body-text %}{% endblock %}
+  </div>
   
   <div id="right-image">
     <img src="/media/images/vis_comm.gif" alt="visual communication" />

@@ -1,14 +1,14 @@
-{% extends "cms/base.html" %}
+{% extends "404.html" %}
 
 {% block title %}500 - Server error{% endblock %}
 
-{% block content %}
+{% block body-text %}
+  <div id="text-area">
+    <p>500 - Server error</p>
 
-  <h2 id="pageName">500 - Server error</h2>
-
-  <p>
-    There's been an error. It's been reported to the site administrators via e-mail and
-    should be fixed shortly. Thanks for your patience.
-  </p>
-
+    <p>
+      There's been an error. It's been reported to the site administrators via e-mail and
+      should be fixed shortly. Thanks for your patience.
+    </p>
+  </div>
 {% endblock %}

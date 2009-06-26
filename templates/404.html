@@ -1,11 +1,49 @@
 {% extends "cms/base.html" %}
 
+{% block extra-styling %}
+<style type="text/css">
+  a#home {
+    display: block;
+    height: 36px;
+    background: #54575e url(/media/images/error-icon.png) no-repeat left top;
+  }
+
+  a#home:hover { background-position: left bottom; }
+    
+  #img-block {
+    background-image: url(/media/images/error-bg.jpg);
+  }
+</style>
+{% endblock %}
+
 {% block title %}404 - Page not found{% endblock %}
 
-{% block content %}
+{% block menu-bar %}
+  <div id="menu-bar">
+    <ul>
+      <li><a href="{% url mingus.views.index %}">Home</a></li>
+    </ul>
+  </div>
+{% endblock %}
 
-  <h2 id="pageName">404 - Page not found</h2>
+{% block article-menu %}
+  <ol id='article-menu'>
+    <li><a href="{% url mingus.views.index %}">Home</a></li>
+  </ol>
+{% endblock %}
 
-  <p>We're sorry, but the requested page could not be found.</p>
+{% block side-menu %}
+  <div id="side-menu">
+    <ul>
+      <li><a href="{% url mingus.views.index %}" id="home">&nbsp;</a></li>
+    </ul>
+  </div>
+{% endblock %}
 
+{% block body-text %}
+  <div id="text-area">
+    <p>404 - Page not found</p>
+
+    <p>We're sorry, but the requested page could not be found.</p>
+  </div>
 {% endblock %}
