@@ -12,15 +12,19 @@
 
 {% block article-menu %}
   <ol id='article-menu'>
-    {% for article in in_this_section %}
-      <li><a href='{% url mingus.views.article article.slug %}'>{{ article.title }}</a></li>
+    {% for article in in_this_section|slice:':7' %}
+      <li>
+        <a href='{% url mingus.views.article article.slug %}' {% if article.feature %}class='feature-article'{% endif %}>
+          {{ article.title }}
+        </a>
+      </li>
     {% endfor %}
   </ol>
 {% endblock %}
 
 {% block related %}
   <div id="extra-links">
-    {% for rel in related %}
+    {% for rel in related|slice:':3' %}
       <p><a href='{% url mingus.views.article rel.slug %}'>{{ rel.title }}</a></p>
     {% endfor %}
   </div>
