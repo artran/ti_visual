@@ -36,5 +36,10 @@ TEMPLATE_DIRS = (
     os.path.join(DIRNAME, 'templates'),
 )
 
+SECTION_BLOCK_IMG_HELP = 'The large image on each section. Needs to be 765 x 253'
+SECTION_THUMB_IMG_HELP = 'The section icon. Use a rollover image of 115 x 72'
+IMG_HELP = 'In sections this is an alternative for the large image on each section so it needs to be 765 x 253. In articles it can be whatever image you like.'
+SECTION_ALT_THUMB_IMG_HELP = 'Not used - leave blank'
+
 # Load the local settings
 from local_settings import *
