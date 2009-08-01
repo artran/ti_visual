@@ -38,7 +38,8 @@ TEMPLATE_DIRS = (
 
 SECTION_BLOCK_IMG_HELP = 'The large image on each section. Needs to be 765 x 253'
 SECTION_THUMB_IMG_HELP = 'The section icon. Use a rollover image of 115 x 72'
-IMG_HELP = 'In sections this is an alternative for the large image on each section so it needs to be 765 x 253. In articles it can be whatever image you like.'
+ARTICLE_IMG_HELP = 'Must be an image.'
+SECTION_ALT_IMG_HELP = 'An alternative for the large image on each section so it needs to be 765 x 253.'
 SECTION_ALT_THUMB_IMG_HELP = 'Not used - leave blank'
 
 # Load the local settings
