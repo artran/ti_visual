@@ -6,9 +6,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # The main site
-    (r'^$', 'django.views.generic.simple.redirect_to', {'url': '/articles/'}),
+    (r'^$', 'django.views.generic.simple.redirect_to', {'url': '/articles/section/profile/'}),
     (r'^articles/', include('mingus.urls')),
-    (r'^utils/', include('utils.urls')),
+    #(r'^utils/', include('utils.urls')),
 )
 
 urlpatterns += patterns('',
