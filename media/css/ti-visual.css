@@ -87,7 +87,7 @@ body {
   color: white;
 }
 
-#menu-bar a:hover, #menu-bar a:active {
+#menu-bar a:hover, #menu-bar a:active, #menu-bar a.current-section {
   color: #7bc6fc;
 }
 
@@ -185,7 +185,7 @@ ol#article-menu a:link, ol#article-menu a:visited {
   display: block;
 }
 
-ol#article-menu li:hover {
+ol#article-menu li:hover, ol#article-menu li.current-article {
   opacity: 0.75;
 }
 

@@ -11,13 +11,21 @@
   {% block extra-styling %}
     <style type="text/css">
       {% for section in sections %}
-        a#{{ section.slug }} {
-          display: block;
-          height: 36px;
-          background: #54575e url({{ section.thumbnail_img.url }}) no-repeat left top;
-        }
+        {% ifnotequal section article.section %}
+            a#{{ section.slug }} {
+              display: block;
+              height: 36px;
+              background: #54575e url({{ section.thumbnail_img.url }}) no-repeat left top;
+            }
 
-        a#{{ section.slug }}:hover { background-position: left bottom; }
+            a#{{ section.slug }}:hover { background-position: left bottom; }
+        {% else %}
+            a#{{ section.slug }} {
+              display: block;
+              height: 36px;
+              background: #54575e url({{ section.thumbnail_img.url }}) no-repeat left bottom;
+            }
+        {% endifnotequal %}
       {% endfor %}
     
       #img-block {
@@ -46,7 +54,7 @@
     <div id="menu-bar">
       <ul>
         {% for section in sections %}
-          <li><a href="{% url mingus.views.section section.slug %}">{{ section }}</a></li>
+          <li><a href="{% url mingus.views.section section.slug %}" {% ifequal section article.section %}class='current-section'{% endifequal %}>{{ section }}</a></li>
         {% endfor %}
       </ul>
     </div>

@@ -12,10 +12,10 @@
 
 {% block article-menu %}
   <ol id='article-menu'>
-    {% for article in in_this_section|slice:':7' %}
-      <li>
-        <a href='{% url mingus.views.article article.slug %}' {% if article.feature %}class='feature-article'{% endif %}>
-          {{ article.title }}
+    {% for article1 in in_this_section|slice:':7' %}
+      <li  {% ifequal article1 article %}class='current-article'{% endifequal %}>
+        <a href='{% url mingus.views.article article1.slug %}' {% if article1.feature %}class='feature-article'{% endif %}>
+          {{ article1.title }}
         </a>
       </li>
     {% endfor %}
