@@ -21,8 +21,8 @@
       {% endfor %}
     
       #img-block {
-        {% if article.banner %}
-            background-image: {{ article.banner.get_absolute_url }}
+        {% if banner_image %}
+            background-image: url({{ banner_image.get_absolute_url }});
         {% else %}
             background-image: url({{ article.section.get_random_image_url }});
         {% endif %}

@@ -24,14 +24,16 @@ h1,h2,h3,h4,h5,h6,pre,code { font-size:1em; }
 /* form elements are oddly inconsistent, and not quite CSS emulatable. */
 /*  nonetheless strip their margin and padding as well */
 ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input
-{ margin:0; padding:0 }
+{ margin: 0; padding: 0; }
 
 /* whoever thought blue linked image borders were a good idea? */
-a img,:link img,:visited img { border:none }
+a img, :link img, :visited img, :hover img, :active img { border: none; }
 img[usemap] {border: none;} /* This should be in the rule above but IE6 gets confused by it */
 
+:focus {outline: 0;}
+
 /* de-italicize address */
-address { font-style:normal; }
+address { font-style: normal; }
 
 /* Un-muddy the input fields */
 input[text], textarea { background-color: white; }
@@ -49,7 +51,8 @@ body {
   width: 765px;
   color: #2f3b76;
   font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
-  font-size: 80%;
+  font-size: 75%;
+  letter-spacing: 0.05em;
 }
 
 #banner {
@@ -77,15 +80,26 @@ body {
 #menu-bar li {
   display: block;
   float: left;
-  margin-right: 50px;
+  margin-right: 58px;
 }
 
 #menu-bar a:link, #menu-bar a:visited {
   color: white;
 }
 
-#menu-bar a:hover {
+#menu-bar a:hover, #menu-bar a:active {
   color: #7bc6fc;
+}
+
+/*-- makes the active page highlight in the menu --*/
+
+#profile. menu-bar li. a,
+#services li. a,
+#portfolio li. a,
+#resources li. a,
+#contact li. a
+{
+	color: #7bc6fc;
 }
 
 #img-block {
@@ -122,7 +136,23 @@ body {
 }
 
 #text-area p {
-  margin: 14px 9px 2em 0;
+  margin: 14px 9px 1.2em 0;
+}
+
+#text-area h2 {
+  font-size: 140%;	
+  letter-spacing: 0.12em;
+  margin: 20px 9px 5px 0;
+}
+
+#text-area h3 {
+  color: #66ccff;
+  margin: 14px 9px 5px 0;
+}
+
+#text-area ul {
+  list-style-type:square;
+  list-style-position: inside;
 }
 
 .emphasis {
@@ -145,8 +175,8 @@ ol#article-menu li {
   width: 150px;
   background-color: #54575e;
   opacity: 0.5;
-  margin: 5px 0 5px 9px;
-  padding: 5px 0 5px 15px;
+  margin: 10px 0 10px 9px;
+  padding: 1px 0 2px 15px;
   text-transform: lowercase;
 }
 
@@ -167,7 +197,7 @@ ol#article-menu li:hover {
 
 #extra-links p {
   float: left;
-  background-color: #5995da;
+  background-color: #0099ff;
   color: white;
   font-size: 12px;
   width: 154px;
@@ -190,7 +220,7 @@ ol#article-menu li:hover {
 #right-image {
   position: absolute;
   top: 25px;
-  left: 800px;
+  left: 785px;
 }
 
 #footer {
