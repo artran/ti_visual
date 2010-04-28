@@ -54,3 +54,5 @@ INSTALLED_APPS = (
     'mingus',
     'utils',
 )
+
+CONTACT_RECIPIENTS = ('ray@artran.co.uk',)
