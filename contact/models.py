@@ -24,7 +24,7 @@ class ContactForm(models.Model):
 class ContactFormElements(models.Model):
     'A join model that allows the elements of a form to be ordered.'
     
+    label = models.CharField(max_length=100, help_text='Label for this element.')
     element = models.ForeignKey(Element)
     form = models.ForeignKey(ContactForm)
     sort = models.PositiveSmallIntegerField(help_text='Low numbers sort first.')
-    label = models.CharField(max_length=100, help_text='Label for this element.')
