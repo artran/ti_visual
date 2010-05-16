@@ -3,7 +3,7 @@ from django.db import models
 class Element(models.Model):
     'A component of a contact form.'
     
-    name = models.CharField(max_length=20, help_text='Memorable name for the component')
+    name = models.CharField(max_length=20, unique=True, help_text='Memorable name for the component')
     code = models.CharField(max_length=100, help_text='The django code to produce this component')
     
     def __unicode__(self):
@@ -12,7 +12,7 @@ class Element(models.Model):
 class ContactForm(models.Model):
     'A collection of form elements that know where to post to.'
     
-    name = models.CharField(max_length=20, help_text='Memorable name for the form.')
+    name = models.CharField(max_length=20, unique=True, help_text='Memorable name for the form.')
     recipient_list = models.TextField(help_text='Comma separated list of recipients.')
     subject_template = models.CharField(max_length=100, help_text='Template code to produce the email subject line.')
     body_template = models.TextField(help_text='Template code to produce the email body.')
