@@ -8,8 +8,8 @@ class FormElementInline(admin.TabularInline):
     model = ContactFormElements
     extra = 2
 
-class ContactFormAdmin(admin.ModelAdmin):
+class ContactFormModelAdmin(admin.ModelAdmin):
     inlines = (FormElementInline,)
 
 admin.site.register(Element, ElementAdmin)
-admin.site.register(ContactForm, ContactFormAdmin)
+admin.site.register(ContactFormModel, ContactFormModelAdmin)

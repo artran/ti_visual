@@ -4,7 +4,7 @@ class Element(models.Model):
     'A component of a contact form.'
     ELEMENT_CHOICES = (
         ('char', 'CharField'),
-        ('text', 'TextField'),
+        ('email', 'EmailField'),
         ('bool', 'BooleanField'),
         ('date', 'DateField'),
         ('dec', 'DecimalField'),
@@ -12,14 +12,14 @@ class Element(models.Model):
     )
     
     name = models.CharField(max_length=20, unique=True, help_text='Memorable name for the component')
-    field = models.CharField(max_length=5, choices=ELEMENT_CHOICES)
+    field = models.CharField(max_length=10, choices=ELEMENT_CHOICES)
     default = models.CharField(max_length=25, blank=True)
     attrs = models.CharField(max_length=255, blank=True, help_text='HTML attributes in dict format')
     
     def __unicode__(self):
         return self.name
 
-class ContactForm(models.Model):
+class ContactFormModel(models.Model):
     'A collection of form elements that know where to post to.'
     
     name = models.CharField(max_length=20, unique=True, help_text='Memorable name for the form.')
@@ -36,5 +36,6 @@ class ContactFormElements(models.Model):
     
     label = models.CharField(max_length=100, help_text='Label for this element.')
     element = models.ForeignKey(Element)
-    form = models.ForeignKey(ContactForm)
+    form = models.ForeignKey(ContactFormModel)
     sort = models.PositiveSmallIntegerField(help_text='Low numbers sort first.')
+    required = models.BooleanField(default=True)
