@@ -2,9 +2,19 @@ from django.db import models
 
 class Element(models.Model):
     'A component of a contact form.'
+    ELEMENT_CHOICES = (
+        ('char', 'CharField'),
+        ('text', 'TextField'),
+        ('bool', 'BooleanField'),
+        ('date', 'DateField'),
+        ('dec', 'DecimalField'),
+        ('int', 'IntegerField'),
+    )
     
     name = models.CharField(max_length=20, unique=True, help_text='Memorable name for the component')
-    code = models.CharField(max_length=100, help_text='The django code to produce this component')
+    field = models.CharField(max_length=5, choices=ELEMENT_CHOICES)
+    default = models.CharField(max_length=25, blank=True)
+    attrs = models.CharField(max_length=255, blank=True, help_text='HTML attributes in dict format')
     
     def __unicode__(self):
         return self.name
