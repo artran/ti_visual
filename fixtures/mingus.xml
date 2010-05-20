@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<django-objects version="1.0">
+  <object pk="1" model="mingus.section">
+    <field type="CharField" name="name">profile</field>
+    <field type="BooleanField" name="live">True</field>
+    <field type="SlugField" name="slug">profile</field>
+    <field type="FileField" name="block_img">block-images/image.jpg</field>
+    <field type="FileField" name="thumbnail_img">icons/about_us.png</field>
+    <field type="SmallIntegerField" name="sort">10</field>
+    <field type="BooleanField" name="sort_articles">False</field>
+    <field to="mingus.section" name="parent" rel="ManyToOneRel">
+      <None/>
+    </field>
+    <field to="auth.group" name="allowed_groups" rel="ManyToManyRel"/>
+  </object>
+  <object pk="5" model="mingus.section">
+    <field type="CharField" name="name">services</field>
+    <field type="BooleanField" name="live">True</field>
+    <field type="SlugField" name="slug">services</field>
+    <field type="FileField" name="block_img">block-images/image____.jpg</field>
+    <field type="FileField" name="thumbnail_img">icons/services.png</field>
+    <field type="SmallIntegerField" name="sort">20</field>
+    <field type="BooleanField" name="sort_articles">False</field>
+    <field to="mingus.section" name="parent" rel="ManyToOneRel">
+      <None/>
+    </field>
+    <field to="auth.group" name="allowed_groups" rel="ManyToManyRel"/>
+  </object>
+  <object pk="3" model="mingus.section">
+    <field type="CharField" name="name">portfolio</field>
+    <field type="BooleanField" name="live">True</field>
+    <field type="SlugField" name="slug">portfolio</field>
+    <field type="FileField" name="block_img">block-images/image__.jpg</field>
+    <field type="FileField" name="thumbnail_img">icons/portfolio.png</field>
+    <field type="SmallIntegerField" name="sort">30</field>
+    <field type="BooleanField" name="sort_articles">False</field>
+    <field to="mingus.section" name="parent" rel="ManyToOneRel">
+      <None/>
+    </field>
+    <field to="auth.group" name="allowed_groups" rel="ManyToManyRel"/>
+  </object>
+  <object pk="4" model="mingus.section">
+    <field type="CharField" name="name">resources</field>
+    <field type="BooleanField" name="live">True</field>
+    <field type="SlugField" name="slug">resources</field>
+    <field type="FileField" name="block_img">block-images/image___.jpg</field>
+    <field type="FileField" name="thumbnail_img">icons/resources.png</field>
+    <field type="SmallIntegerField" name="sort">40</field>
+    <field type="BooleanField" name="sort_articles">False</field>
+    <field to="mingus.section" name="parent" rel="ManyToOneRel">
+      <None/>
+    </field>
+    <field to="auth.group" name="allowed_groups" rel="ManyToManyRel"/>
+  </object>
+  <object pk="2" model="mingus.section">
+    <field type="CharField" name="name">contact</field>
+    <field type="BooleanField" name="live">True</field>
+    <field type="SlugField" name="slug">contact</field>
+    <field type="FileField" name="block_img">block-images/image_.jpg</field>
+    <field type="FileField" name="thumbnail_img">icons/contact.png</field>
+    <field type="SmallIntegerField" name="sort">50</field>
+    <field type="BooleanField" name="sort_articles">False</field>
+    <field to="mingus.section" name="parent" rel="ManyToOneRel">
+      <None/>
+    </field>
+    <field to="auth.group" name="allowed_groups" rel="ManyToManyRel"/>
+  </object>
+</django-objects>
