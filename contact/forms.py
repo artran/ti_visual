@@ -1,7 +1,7 @@
 from django import forms
 from django.template.defaultfilters import slugify
 
-from models import
+from models import *
 
 
 class ContactForm(forms.Form):
