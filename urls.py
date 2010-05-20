@@ -1,4 +1,5 @@
 import sys
+from django.conf import settings
 from django.conf.urls.defaults import *
 from django.contrib import admin
 
@@ -21,5 +22,5 @@ urlpatterns += patterns('',
 # Static content
 if 'runserver' in sys.argv:
     urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media'}),
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     )

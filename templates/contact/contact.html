@@ -1,8 +1,13 @@
-<html>
-<head><title>My form</title></head>
-<body>
-  <form action='' method='post'>
-    {{ form.as_p }}
-    <input type='submit'/>
-  </form>
-</body>
+{% extends "mingus/article.html" %}
+
+{% load cms_tags %}
+{% block title %}Ti-Visual | contact us{% endblock %}
+
+{% block body-text %}
+  <div id="text-area">
+    <form action='' method='post'>
+      {{ form.as_p }}
+      <input type='submit'/>
+    </form>
+  </div>
+{% endblock %}
