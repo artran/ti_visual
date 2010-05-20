@@ -1,7 +1,8 @@
 from django.shortcuts import render_to_response
 
-from models import *
 from forms import ContactForm
+from models import *
+
 
 def contact(request):
     if request.method == 'POST': # If the form has been submitted...
@@ -12,7 +13,7 @@ def contact(request):
             return HttpResponseRedirect('/thanks/') # Redirect after POST
     else:
         form = ContactForm(1) # An unbound form
-    
+
     #assert 0, dir(form)
 
     return render_to_response('contact/contact.html', {

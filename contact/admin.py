@@ -1,12 +1,15 @@
 from django.contrib import admin
 from ti_visual.contact.models import *
 
+
 class ElementAdmin(admin.ModelAdmin):
     pass
+
 
 class FormElementInline(admin.TabularInline):
     model = ContactFormElements
     extra = 2
+
 
 class ContactFormModelAdmin(admin.ModelAdmin):
     inlines = (FormElementInline,)

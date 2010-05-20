@@ -1,14 +1,15 @@
 from django.db import connection
 from django.template import Template, Context
 
+
 class SQLLogMiddleware:
 
-    def process_response ( self, request, response ): 
+    def process_response(self, request, response):
         if (not request.path.startswith('/media')):
             time = 0.0
             for q in connection.queries:
-    		time += float(q['time'])
-        
+                time += float(q['time'])
+
             t = Template('''
                 <div id="sql-log">
                     <p><em>Total query count:</em> {{ count }}<br/>
@@ -21,5 +22,5 @@ class SQLLogMiddleware:
                 </div>
             ''')
 
-            response.content = "%s%s" % ( response.content, t.render(Context({'sqllog':connection.queries,'count':len(connection.queries),'time':time})))
+            response.content = "%s%s" % (response.content, t.render(Context({'sqllog': connection.queries, 'count': len(connection.queries), 'time': time})))
         return response
