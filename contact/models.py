@@ -15,6 +15,7 @@ class Element(models.Model):
     name = models.CharField(max_length=20, unique=True, help_text='Memorable name for the component')
     field = models.CharField(max_length=10, choices=ELEMENT_CHOICES)
     default = models.CharField(max_length=25, blank=True)
+    widget_class = models.CharField(max_length=25, blank=True)
     attrs = models.CharField(max_length=255, blank=True, help_text='HTML attributes in dict format')
 
     def __unicode__(self):

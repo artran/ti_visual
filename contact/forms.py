@@ -1,15 +1,16 @@
 from django import forms
 from django.template.defaultfilters import slugify
+from django.shortcuts import get_object_or_404
 
 from models import *
-
 
 class ContactForm(forms.Form):
 
     def __init__(self, form_id, *args, **kwargs):
+        contact_form = get_object_or_404(ContactFormModel, pk=form_id)
+
         forms.Form.__init__(self, *args, **kwargs)
 
-        contact_form = ContactFormModel.objects.get(pk=form_id)
         elements = ContactFormElements.objects.filter(form=contact_form).order_by('sort')
 
         for element in elements:
@@ -32,6 +33,19 @@ class ContactForm(forms.Form):
 
             field.required = element.required
             field.label = element.label
+
+            attrs = {}
+            if element.element.attrs:
+                try:
+                    attrs = eval(element.element.attrs)
+                except SyntaxError:
+                    pass
+            if element.element.widget_class:
+                attrs['class'] = element.element.widget_class
+            field.widget.attrs = attrs
+
+            if element.element.default:
+                field.initial = element.element.default
 
             self.fields['%s' % _clean_string(element.label)] = field
 
