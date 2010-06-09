@@ -17,6 +17,7 @@ class Element(models.Model):
     default = models.CharField(max_length=25, blank=True)
     widget_class = models.CharField(max_length=25, blank=True)
     attrs = models.CharField(max_length=255, blank=True, help_text='HTML attributes in dict format')
+    live = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.name

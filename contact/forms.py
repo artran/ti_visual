@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 
 from models import *
 
+
 class ContactForm(forms.Form):
 
     def __init__(self, form_id, *args, **kwargs):

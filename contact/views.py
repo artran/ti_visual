@@ -16,3 +16,7 @@ def contact(request, form_id):
     return render_to_response('contact/contact.html', {
         'form': form,
     })
+
+
+def list_forms(request):
+    pass
