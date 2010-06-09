@@ -6,7 +6,7 @@
 
 {% block body-text %}
   <div id="text-area">
-    {{ article|add_images|safe }}
+    {{ article.render }}
   </div>
 {% endblock %}
 
