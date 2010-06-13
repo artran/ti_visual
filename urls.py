@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     # The main site
     (r'^$', 'django.views.generic.simple.redirect_to', {'url': '/articles/section/profile/'}),
     (r'^articles/', include('mingus.urls')),
-    (r'^contact/(?P<form_id>\d+)/$', 'ti_visual.contact.views.contact'),
+    (r'^contact/(?P<form_id>\d+)/$', 'contact.views.contact'),
     #(r'^utils/', include('utils.urls')),
 )
 
