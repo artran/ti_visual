@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'django.contrib.redirects',
     'mingus.cms',
     'mingus.contact',
+    'south',
 )
 
 CONTACT_RECIPIENTS = ('ray@artran.co.uk',)
