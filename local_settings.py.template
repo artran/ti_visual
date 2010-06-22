@@ -61,3 +61,5 @@ INSTALLED_APPS = (
 CONTACT_RECIPIENTS = ('ray@artran.co.uk',)
 
 FIXTURE_DIRS = (os.path.join(DIRNAME, 'fixtures',))
+
+TEST_SERVER = bool(os.environ.get('TEST_SERVER', False))
