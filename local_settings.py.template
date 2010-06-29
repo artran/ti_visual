@@ -1,5 +1,7 @@
 import os
 
+TEST_SERVER = bool(os.environ.get('TEST_SERVER', False))
+
 DIRNAME = os.path.dirname(__file__)
 
 ADMINS = (
@@ -17,6 +19,12 @@ DATABASE_USER = ''
 DATABASE_PASSWORD = ''
 DATABASE_HOST = ''
 DATABASE_PORT = ''
+
+REPO_ROOT = os.path.join(DIRNAME, 'media_repos')
+if TEST_SERVER:
+    MEDIA_ROOT = os.path.join(DIRNAME, 'media_repos/preview_content')
+else:
+    MEDIA_ROOT = os.path.join(DIRNAME, 'media_repos/live_content')
 
 # Local time zone for this installation. Choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
@@ -55,11 +63,12 @@ INSTALLED_APPS = (
     'django.contrib.redirects',
     'mingus.cms',
     'mingus.contact',
+    'django_nose',
     'south',
 )
+
+TEST_RUNNER = 'django_nose.run_tests'
 
 CONTACT_RECIPIENTS = ('ray@artran.co.uk',)
 
 FIXTURE_DIRS = (os.path.join(DIRNAME, 'fixtures',))
-
-TEST_SERVER = bool(os.environ.get('TEST_SERVER', False))
