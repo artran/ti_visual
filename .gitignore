@@ -6,3 +6,4 @@
 *.db
 local_settings.py
 manage.py
+media_repos
